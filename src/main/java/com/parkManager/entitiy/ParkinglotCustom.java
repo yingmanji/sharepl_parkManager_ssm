@@ -15,4 +15,54 @@ public class ParkinglotCustom extends parking {
     private String parkLocation;
     //停车场id
     private long parkingId;
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
+    public String getOrdersUserName() {
+        return ordersUserName;
+    }
+
+    public void setOrdersUserName(String ordersUserName) {
+        this.ordersUserName = ordersUserName;
+    }
+
+    public String getOrdersPhoneNum() {
+        return ordersPhoneNum;
+    }
+
+    public void setOrdersPhoneNum(String ordersPhoneNum) {
+        this.ordersPhoneNum = ordersPhoneNum;
+    }
+
+    public String getParkLocation() {
+        return parkLocation;
+    }
+
+    public void setParkLocation(String parkLocation) {
+        this.parkLocation = parkLocation;
+    }
+
+    @Override
+    public long getParkingId() {
+        return parkingId;
+    }
+
+    @Override
+    public void setParkingId(long parkingId) {
+        this.parkingId = parkingId;
+    }
 }
