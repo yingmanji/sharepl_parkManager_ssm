@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.parkManager.mapper.usersMapperCustom">
+
+
+    <!--查询车位业主姓名和手机号以及租车者姓名和手机号还有所租车位信息-->
+    <select id="selectUsersParkinglot" parameterType="int" resultMap="selectUsersParkingResultMap">
+        SELECT
+        users.user_name ,
+        users.phone_num,
+        park.ordersUserName,
+        park.ordersPhoneNum,
+        park.parkLocation,
+        park.parkingId
+        FROM
+        (SELECT
+        users.user_name ordersUserName,
+        users.phone_num ordersPhoneNum,
+        parkinglot.park_location parkLocation,
+        parkinglot.user_id parkUserId,
+        parking.parking_id parkingId
+        FROM
+        users,
+        orders,
+        generate,
+        parkinglot,
+        parking
+        WHERE
+        parking.parking_id=parkinglot.parking_id
+        AND
+        users.user_id=orders.user_id
+        AND
+        orders.parkinglot_id=generate.parkinglot_id
+        AND
+        generate.parkinglot_id=parkinglot.parkinglot_id)
+        AS
+        park,
+        users
+        WHERE
+        park.parkUserId=users.user_id
+        AND
+        park.parkingId=#{id};
+    </select>
+    
+    <resultMap id="selectUsersParkingResultMap" type="com.parkManager.entitiy.ParkinglotCustom">
+
+        <id column="parkingId" property="parkingId"/>
+
+        <result column="user_name" property="user_name"/>
+        <result column="phone_num" property="phone_num"/>
+        <result column="ordersUserName" property="ordersUserName"/>
+        <result column="ordersPhoneNum" property="ordersPhoneNum"/>
+        <result column="parkLocation" property="parkLocation"/>
+
+    </resultMap>
+</mapper>
