@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>停车场管理员系统</title>
 </head>
 <body>
     <form>
-        <table>
+        <table border="1" width="100%">
             停车场管理员数据:
             <tr>
                 <td>租车者姓名</td>
@@ -26,7 +26,14 @@
 
             <c:forEach items="${ParkinglotCustoms}" var="park">
                 <tr>
-                    <td></td>
+
+                    <td>${park.user_name}</td>
+                    <td>${park.phone_num}</td>
+                    <td>${park.parkLocation}</td>
+                    <td>${park.parkingId}</td>
+                    <td>${park.ordersUserName}</td>
+                    <td>${park.ordersPhoneNum}</td>
+
                 </tr>
             </c:forEach>
 

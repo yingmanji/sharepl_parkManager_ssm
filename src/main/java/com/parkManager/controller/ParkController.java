@@ -24,7 +24,7 @@ public class ParkController{
     private UserParkingService userParkingService;
 
     @RequestMapping(value = "queryUserParkingById.action",method = {RequestMethod.GET,RequestMethod.POST})
-    public String queryUserParkingById(Model model, HttpServletRequest request, Integer id)throws Exception{
+    public String queryUserParkingById(Model model, HttpServletRequest request, @RequestParam(value = "id",defaultValue = "2") Integer id)throws Exception{
 
         List<ParkinglotCustom> parkinglotCustoms=userParkingService.selectUsersParkinglot(id);
 

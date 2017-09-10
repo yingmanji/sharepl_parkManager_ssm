@@ -162,6 +162,17 @@
 
   </dependencies>
   <build>
+    <!--如果不添加下面的节点mybatis的mapper.xml文件都会被漏掉-->
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
     <finalName>sharepl_parkManager_ssm</finalName>
   </build>
 </project>
